@@ -42,7 +42,7 @@
             android:name="com.example.kacao.ecommercial.HomeScreen"
             android:label="@string/home"
             android:screenOrientation="portrait"
-            android:launchMode="singleTask" >
+            android:launchMode="singleTask">
         </activity>
 
         <activity

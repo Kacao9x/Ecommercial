@@ -236,8 +236,8 @@ public class Search extends Fragment
 
 		@Override
 		protected String doInBackground(String... sText) {
-			
-			url="http://lawgo.in/lawgo/products/user/1/search/"+sText[0];
+			//url="http://lawgo.in/lawgo/products/user/1/search/"+sText[0];
+			url="http://proj-309-dk-3.cs.iastate.edu/webservice_model_basket.php"+sText[0];
 			String returnResult = getProductList(url);
 			this.textSearch = sText[0];
 			return returnResult;
