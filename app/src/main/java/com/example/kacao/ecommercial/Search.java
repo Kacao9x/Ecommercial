@@ -45,9 +45,7 @@ public class Search extends Fragment
 	ListView searchResults;
 	String found = "N";
 	
-	  
-	
-	
+
 	//This arraylist will have data as pulled from server. This will keep cumulating.
 	ArrayList<Product> productResults = new ArrayList<Product>();
 	//Based on the search string, only filtered products will be moved here from productResults
@@ -118,7 +116,6 @@ public class Search extends Fragment
     		@Override
     		public void onFocusChange(View v, boolean hasFocus) {
     			// TODO Auto-generated method stub
-    				
     			//Toast.makeText(activity, String.valueOf(hasFocus),Toast.LENGTH_SHORT).show();
     		}
     	});
@@ -135,21 +132,16 @@ public class Search extends Fragment
     		
     		@Override
     		public boolean onQueryTextChange(String newText) {
-    			
     				if (newText.length() > 3)
     				{
-    					
     					searchResults.setVisibility(myFragmentView.VISIBLE);
     					myAsyncTask m= (myAsyncTask) new myAsyncTask().execute(newText);
     				}
     				else
     				{
-    					
     					searchResults.setVisibility(myFragmentView.INVISIBLE);
     				}
-    			
-    			
-        							
+
     			return false;
     		}
     		
@@ -236,8 +228,8 @@ public class Search extends Fragment
 
 		@Override
 		protected String doInBackground(String... sText) {
-			//url="http://lawgo.in/lawgo/products/user/1/search/"+sText[0];
-			url="http://proj-309-dk-3.cs.iastate.edu/webservice_model_basket.php"+sText[0];
+			url="http://lawgo.in/lawgo/products/user/1/search/"+sText[0];
+			//url="http://proj-309-dk-3.cs.iastate.edu/webservice_model_basket.php"+sText[0];
 			String returnResult = getProductList(url);
 			this.textSearch = sText[0];
 			return returnResult;
@@ -246,16 +238,12 @@ public class Search extends Fragment
 
 		public String getProductList(String url)
 		{
-			
 			Product tempProduct = new Product();
 			String matchFound = "N";
 			//productResults is an arraylist with all product details for the search criteria
 			//productResults.clear();
-			
-			
+
 			try {
-				
-				
 				JSONObject json = jParser.getJSONFromUrl(url);
 				
 				productList = json.getJSONArray("ProductList");
@@ -281,18 +269,12 @@ public class Search extends Fragment
 					
 					for (int j=0; j < productResults.size();j++)
 					{
-						
 						if (productResults.get(j).getProductCode().equals(tempProduct.getProductCode()))
-						{
-							matchFound = "Y";				
-						}
+							matchFound = "Y";
 					}
 					
 					if (matchFound == "N")
-					{
 							productResults.add(tempProduct);
-					}
-					
 				}
 				
 				return ("OK");
@@ -316,8 +298,6 @@ public class Search extends Fragment
 			}
 			else
 			{
-		
-				
 				//calling this method to filter the search results from productResults and move them to 
 				//filteredProductResults
 				filterProductArray(textSearch);
